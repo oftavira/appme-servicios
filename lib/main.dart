@@ -1,4 +1,5 @@
-import 'package:appme/main_content.dart';
+import 'package:appme/home_view.dart';
+import 'package:appme/utils/opening_opacity.dart';
 import 'package:flutter/material.dart';
 import 'package:appme/services/locator.dart';
 
@@ -15,7 +16,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'AppMe',
       theme: ThemeData(primarySwatch: Colors.grey),
-      home: SafeArea(child: HomeView(title: 'AppMe')),
+      home: MainAnimation(),
+    );
+  }
+}
+
+class MainAnimation extends StatelessWidget {
+  const MainAnimation({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return OpeningOpacity(
+      child: SafeArea(
+        child: HomeView(title: 'AppMe'),
+      ),
     );
   }
 }

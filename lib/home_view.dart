@@ -1,6 +1,7 @@
 import 'package:appme/NavBar/appmedrawer.dart';
 import 'package:appme/services/drawer_service.dart';
 import 'package:appme/services/locator.dart';
+import 'package:appme/utils/opening_opacity.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:appme/NavBar/nav_bar_responsive.dart';
@@ -19,13 +20,15 @@ class HomeView extends StatelessWidget {
       key: locator<DrawerService>().drawerKey,
       drawerEnableOpenDragGesture: false,
       drawer: AppMeDrawer(),
-      body: Center(
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            Background(),
-            EnsureFlutterFire(),
-          ],
+      body: OpeningOpacity(
+        child: Center(
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              Background(),
+              EnsureFlutterFire(),
+            ],
+          ),
         ),
       ),
     );
@@ -54,12 +57,16 @@ class EnsureFlutterFire extends StatelessWidget {
 
         // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
-          return NavContent();
+          return OpeningOpacity(
+            child: NavContent(),
+          );
         }
 
         // Otherwise, show something whilst waiting for initialization to complete
-        return Center(
-          child: CircularProgressIndicator(),
+        return OpeningOpacity(
+          child: Center(
+            child: CircularProgressIndicator(),
+          ),
         );
       },
     );

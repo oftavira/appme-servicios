@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 
 class OpeningOpacity extends StatefulWidget {
   final Widget child;
-  final double currentOpacity;
-  OpeningOpacity({Key key, @required this.child, this.currentOpacity = 1})
-      : super(key: key);
+  OpeningOpacity({Key key, @required this.child}) : super(key: key);
 
   @override
   _OpeningOpacityState createState() => _OpeningOpacityState();
@@ -19,9 +17,9 @@ class _OpeningOpacityState extends State<OpeningOpacity>
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 800),
+      duration: const Duration(milliseconds: 2000),
     );
-    _animation = Tween<double>(begin: 0, end: widget.currentOpacity).animate(
+    _animation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeIn),
     );
     super.initState();

@@ -3,6 +3,7 @@ import 'package:appme/services/jsonreader.dart';
 import 'package:appme/services/locator.dart';
 import 'package:appme/ui/base_widget.dart';
 import 'package:appme/ui/ui_enum.dart';
+import 'package:appme/utils/delayed_listitem.dart';
 import 'package:flutter/material.dart';
 
 class ResponsiveListCourses extends StatelessWidget {
@@ -41,7 +42,7 @@ class ResponsiveListCourses extends StatelessWidget {
   }
 }
 
-class ArticlesBuilder extends StatelessWidget {
+class ArticlesBuilder extends StatefulWidget {
   final Map<String, Map> articles;
   final List mapKeys;
   const ArticlesBuilder(
@@ -49,30 +50,57 @@ class ArticlesBuilder extends StatelessWidget {
       : super(key: key);
 
   @override
+  _ArticlesBuilderState createState() => _ArticlesBuilderState();
+}
+
+class _ArticlesBuilderState extends State<ArticlesBuilder>
+    with SingleTickerProviderStateMixin {
+  AnimationController _controller;
+
+  @override
+  void initState() {
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1500),
+    );
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    _controller.forward();
     return SizedWidget(
       theBuilder: (context, sizingInformation) {
         if (sizingInformation.deviceScreenType == DeviceScreenType.Mobile) {
           return ListView.separated(
             itemBuilder: (context, index) {
-              return CourseWidget(
-                  details: articles[mapKeys[index]], mobile: true);
+              return AnimatedCourseWidget(
+                  controller: _controller,
+                  details: widget.articles[widget.mapKeys[index]],
+                  mobile: true);
             },
             separatorBuilder: (c, i) => SizedBox(
               height: 10,
             ),
-            itemCount: mapKeys.length,
+            itemCount: widget.mapKeys.length,
           );
         } else {
           return ListView.separated(
             itemBuilder: (context, index) {
-              return CourseWidget(
-                  details: articles[mapKeys[index]], mobile: false);
+              return Container(
+                height: sizingInformation.mobile ? 110 : 150,
+                child: Center(
+                  child: AnimatedCourseWidget(
+                      controller: _controller,
+                      details: widget.articles[widget.mapKeys[index]],
+                      mobile: false),
+                ),
+              );
             },
             separatorBuilder: (c, i) => SizedBox(
               height: 10,
             ),
-            itemCount: mapKeys.length,
+            itemCount: widget.mapKeys.length,
           );
         }
       },
@@ -207,36 +235,36 @@ class PropertieText extends StatelessWidget {
   }
 }
 
-class MobileArticlePreview extends StatelessWidget {
-  const MobileArticlePreview({Key key}) : super(key: key);
+// class MobileArticlePreview extends StatelessWidget {
+//   const MobileArticlePreview({Key key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 150,
-      width: 150,
-      decoration: BoxDecoration(
-        color: AMTGrey,
-        borderRadius: BorderRadius.circular(25),
-      ),
-      clipBehavior: Clip.antiAlias,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(
-            flex: 2,
-            child: Image.asset('assets/images/creativa.png', fit: BoxFit.cover),
-          ),
-          Expanded(
-            flex: 3,
-            child: Center(
-              child: Text(
-                  'Un Artículo acerca de los métodos que tenémos para el aprendizaje'),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       height: 150,
+//       width: 150,
+//       decoration: BoxDecoration(
+//         color: AMTGrey,
+//         borderRadius: BorderRadius.circular(25),
+//       ),
+//       clipBehavior: Clip.antiAlias,
+//       child: Column(
+//         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//         crossAxisAlignment: CrossAxisAlignment.stretch,
+//         children: [
+//           Expanded(
+//             flex: 2,
+//             child: Image.asset('assets/images/creativa.png', fit: BoxFit.cover),
+//           ),
+//           Expanded(
+//             flex: 3,
+//             child: Center(
+//               child: Text(
+//                   'Un Artículo acerca de los métodos que tenémos para el aprendizaje'),
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }

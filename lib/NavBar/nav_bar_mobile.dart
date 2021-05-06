@@ -64,12 +64,33 @@ class NavBarMobile extends StatelessWidget {
   }
 }
 
-class AppMeAnimation extends StatelessWidget {
+class AppMeAnimation extends StatefulWidget {
   const AppMeAnimation({Key key}) : super(key: key);
 
   @override
+  _AppMeAnimationState createState() => _AppMeAnimationState();
+}
+
+class _AppMeAnimationState extends State<AppMeAnimation>
+    with SingleTickerProviderStateMixin {
+  AnimationController _controller;
+  Animation<double> _animation;
+
+  @override
+  void initState() {
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 2000),
+    );
+    _animation = Tween<double>(begin: 0, end: 1).animate(_controller);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return TweenAnimationBuilder(
+    _controller.forward();
+    return FadeTransition(
+      opacity: _animation,
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
         child: GestureDetector(
@@ -77,21 +98,32 @@ class AppMeAnimation extends StatelessWidget {
           onTap: () => locator<DrawerService>().openDrawer(),
         ),
       ),
-      curve: Curves.decelerate,
-      duration: Duration(milliseconds: 550),
-      tween: Tween<double>(begin: 0, end: 1),
-      builder: (context, value, supChild) {
-        return Opacity(
-            opacity: value,
-            child: Row(
-              children: [
-                supChild,
-                SizedBox(
-                  width: 40 * (1 - value),
-                ),
-              ],
-            ));
-      },
     );
   }
 }
+
+
+// return TweenAnimationBuilder(
+//       child: MouseRegion(
+//         cursor: SystemMouseCursors.click,
+//         child: GestureDetector(
+//           child: Image.asset('assets/images/barlogosmall.png'),
+//           onTap: () => locator<DrawerService>().openDrawer(),
+//         ),
+//       ),
+//       curve: Curves.decelerate,
+//       duration: Duration(milliseconds: 550),
+//       tween: Tween<double>(begin: 0, end: 1),
+//       builder: (context, value, supChild) {
+//         return AnimatedOpacity(
+//             opacity: value,
+//             child: Row(
+//               children: [
+//                 supChild,
+//                 SizedBox(
+//                   width: 40 * (1 - value),
+//                 ),
+//               ],
+//             ));
+//       },
+//     );

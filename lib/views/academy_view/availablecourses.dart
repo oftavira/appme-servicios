@@ -74,10 +74,15 @@ class _ArticlesBuilderState extends State<ArticlesBuilder>
         if (sizingInformation.deviceScreenType == DeviceScreenType.Mobile) {
           return ListView.separated(
             itemBuilder: (context, index) {
-              return AnimatedCourseWidget(
-                  controller: _controller,
-                  details: widget.articles[widget.mapKeys[index]],
-                  mobile: true);
+              return Container(
+                height: 110,
+                child: Center(
+                  child: AnimatedCourseWidget(
+                      controller: _controller,
+                      details: widget.articles[widget.mapKeys[index]],
+                      mobile: true),
+                ),
+              );
             },
             separatorBuilder: (c, i) => SizedBox(
               height: 10,
@@ -88,7 +93,7 @@ class _ArticlesBuilderState extends State<ArticlesBuilder>
           return ListView.separated(
             itemBuilder: (context, index) {
               return Container(
-                height: sizingInformation.mobile ? 110 : 150,
+                height: 150,
                 child: Center(
                   child: AnimatedCourseWidget(
                       controller: _controller,
@@ -105,6 +110,13 @@ class _ArticlesBuilderState extends State<ArticlesBuilder>
         }
       },
     );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    // TODO: implement dispose
+    super.dispose();
   }
 }
 

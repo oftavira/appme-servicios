@@ -100,6 +100,13 @@ class _AppMeAnimationState extends State<AppMeAnimation>
       ),
     );
   }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    // TODO: implement dispose
+    super.dispose();
+  }
 }
 
 

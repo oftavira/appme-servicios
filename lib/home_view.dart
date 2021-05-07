@@ -1,6 +1,7 @@
 import 'package:appme/NavBar/appmedrawer.dart';
 import 'package:appme/services/drawer_service.dart';
 import 'package:appme/services/locator.dart';
+import 'package:appme/utils/contact.dart';
 import 'package:appme/utils/opening_opacity.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -107,8 +108,9 @@ class NavContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        padding: EdgeInsets.symmetric(
-          vertical: 40,
+        padding: EdgeInsets.only(
+          top: 40,
+          bottom: 10,
         ),
         // color: Colors.purple[100],
         constraints: BoxConstraints(
@@ -128,6 +130,10 @@ class NavContent extends StatelessWidget {
                   child: NavigationSection(),
                 ),
               ),
+            ),
+            Container(
+              height: 30,
+              child: Contact(),
             ),
           ],
         ),

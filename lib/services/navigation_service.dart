@@ -10,17 +10,4 @@ class NavigationService {
   void goBack() {
     navigatorKey.currentState.pop();
   }
-
-  void testingRoutes(BuildContext context, Widget view) {
-    navigatorKey.currentState.push(
-      PageRouteBuilder(pageBuilder: (ctx, animation, secondaryAnimation) {
-        return view;
-      }, transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        return FadeTransition(
-          opacity: animation,
-          child: child,
-        );
-      }),
-    );
-  }
 }

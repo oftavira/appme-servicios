@@ -4,6 +4,8 @@ import 'package:appme/services/locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+import 'nav_bar_responsive_logo.dart';
+
 class NavBarMobile extends StatelessWidget {
   const NavBarMobile({Key key}) : super(key: key);
 
@@ -52,7 +54,9 @@ class NavBarMobile extends StatelessWidget {
           ),
           Row(
             children: [
-              AppMeAnimation(),
+              AppMeAnimation(
+                mobile: true,
+              ),
               SizedBox(
                 width: 10,
               ),
@@ -63,52 +67,6 @@ class NavBarMobile extends StatelessWidget {
     );
   }
 }
-
-class AppMeAnimation extends StatefulWidget {
-  const AppMeAnimation({Key key}) : super(key: key);
-
-  @override
-  _AppMeAnimationState createState() => _AppMeAnimationState();
-}
-
-class _AppMeAnimationState extends State<AppMeAnimation>
-    with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<double> _animation;
-
-  @override
-  void initState() {
-    _controller = AnimationController(
-      vsync: this,
-      duration: Duration(milliseconds: 2000),
-    );
-    _animation = Tween<double>(begin: 0, end: 1).animate(_controller);
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    _controller.forward();
-    return FadeTransition(
-      opacity: _animation,
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
-        child: GestureDetector(
-          child: Image.asset('assets/images/barlogosmall.png'),
-          onTap: () => locator<DrawerService>().openDrawer(),
-        ),
-      ),
-    );
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    // TODO: implement dispose
-    super.dispose();
-  }
-}
-
 
 // return TweenAnimationBuilder(
 //       child: MouseRegion(

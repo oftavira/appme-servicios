@@ -3,7 +3,7 @@ import 'package:appme/services/jsonreader.dart';
 import 'package:appme/services/locator.dart';
 import 'package:appme/ui/base_widget.dart';
 import 'package:appme/ui/ui_enum.dart';
-import 'package:appme/utils/delayed_listitem.dart';
+import 'package:appme/utils/delayed_list_item.dart';
 import 'package:flutter/material.dart';
 
 class ResponsiveListCourses extends StatelessWidget {

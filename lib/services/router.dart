@@ -1,7 +1,28 @@
+import 'package:appme/home_view.dart';
 import 'package:appme/views/academy_view/availablecourses.dart';
 import 'package:appme/views/landing/landing_view.dart';
 import 'package:appme/views/services_view/services_view.dart';
+import 'package:appme/views/sign_in_view/sign_in_card.dart';
 import 'package:flutter/material.dart';
+
+class AppServicesRouter {
+  static Route<dynamic> generateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case '/view1':
+        return getPageRoute(ContentNavigationSection());
+
+      case '/view2':
+        return getPageRoute(SignInCard(mobile: false));
+
+      default:
+        return MaterialPageRoute(
+          builder: (_) => Scaffold(
+            body: Center(child: Text('No route defined for ${settings.name}')),
+          ),
+        );
+    }
+  }
+}
 
 class AppMeRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {

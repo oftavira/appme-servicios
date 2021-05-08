@@ -5,6 +5,8 @@ import 'package:appme/services/locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+import 'nav_bar_responsive_logo.dart';
+
 class NavBarTablet extends StatelessWidget {
   const NavBarTablet({Key key}) : super(key: key);
 
@@ -55,7 +57,9 @@ class NavBarTablet extends StatelessWidget {
           ),
           Row(
             children: [
-              AppMeAnimation(),
+              AppMeAnimation(
+                mobile: false,
+              ),
               SizedBox(
                 width: 40,
               )
@@ -63,38 +67,6 @@ class NavBarTablet extends StatelessWidget {
           )
         ],
       ),
-    );
-  }
-}
-
-class AppMeAnimation extends StatelessWidget {
-  const AppMeAnimation({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return TweenAnimationBuilder(
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
-        child: GestureDetector(
-          child: Image.asset('assets/images/barlogo.png'),
-          onTap: () => locator<DrawerService>().openDrawer(),
-        ),
-      ),
-      curve: Curves.decelerate,
-      duration: Duration(milliseconds: 550),
-      tween: Tween<double>(begin: 0, end: 1),
-      builder: (context, value, supChild) {
-        return Opacity(
-            opacity: value,
-            child: Row(
-              children: [
-                supChild,
-                SizedBox(
-                  width: 80 * (1 - value),
-                )
-              ],
-            ));
-      },
     );
   }
 }

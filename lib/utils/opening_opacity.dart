@@ -28,9 +28,21 @@ class _OpeningOpacityState extends State<OpeningOpacity>
   @override
   Widget build(BuildContext context) {
     _controller.forward();
-    return FadeTransition(
-      opacity: _animation,
+    return AnimatedBuilder(
+      animation: _controller,
       child: widget.child,
+      builder: (BuildContext context, Widget child) {
+        return FadeTransition(
+          opacity: _animation,
+          child: child,
+        );
+      },
     );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 }

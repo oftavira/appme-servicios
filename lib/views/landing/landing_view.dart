@@ -5,11 +5,36 @@ import 'package:appme/utils/video_loop.dart';
 import 'package:appme/views/landing/landing_background.dart';
 import 'package:flutter/material.dart';
 
-class LandingView extends StatelessWidget {
+class LandingView extends StatefulWidget {
   const LandingView({Key key}) : super(key: key);
 
   @override
+  _LandingViewState createState() => _LandingViewState();
+}
+
+class _LandingViewState extends State<LandingView>
+    with SingleTickerProviderStateMixin {
+  AnimationController _controller;
+
+  @override
+  void initState() {
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 3000),
+    );
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    _controller.forward();
     return SizedWidget(
       theBuilder: (context, sizingInformation) {
         double verticalPadd = sizingInformation.mobile ? 20 : 40;
@@ -51,13 +76,8 @@ class LandingView extends StatelessWidget {
                         doc: 'assets/blender.m4v',
                         height: sizingInformation.mobile ? 150 : 200,
                         width: sizingInformation.mobile ? 210 : 280,
-                        gradient: LinearGradient(
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                            colors: [AMTRed, AMTBlue]),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
+                        mobile: sizingInformation.mobile,
+                        controller: _controller,
                       ),
                     ),
                     SizedBox(
@@ -72,13 +92,8 @@ class LandingView extends StatelessWidget {
                         doc: 'assets/coding.m4v',
                         height: sizingInformation.mobile ? 150 : 200,
                         width: sizingInformation.mobile ? 210 : 280,
-                        gradient: LinearGradient(
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                            colors: [AMTRed, AMTBlue]),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
+                        mobile: sizingInformation.mobile,
+                        controller: _controller,
                       ),
                     ),
                     SizedBox(
@@ -92,13 +107,8 @@ class LandingView extends StatelessWidget {
                         doc: 'assets/design.m4v',
                         height: sizingInformation.mobile ? 150 : 200,
                         width: sizingInformation.mobile ? 210 : 280,
-                        gradient: LinearGradient(
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                            colors: [AMTRed, AMTBlue]),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
+                        mobile: sizingInformation.mobile,
+                        controller: _controller,
                       ),
                     ),
                   ],
@@ -111,6 +121,9 @@ class LandingView extends StatelessWidget {
     );
   }
 }
+
+/// A container that switchs the side of the content deppending on the position
+/// in the list
 
 class SidedContainer extends StatelessWidget {
   final Widget child;
@@ -141,6 +154,43 @@ class SidedContainer extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: childs,
+    );
+  }
+}
+
+class GrowingInfo extends StatelessWidget {
+  final bool mobile;
+  final AnimationController animation;
+  final Animation<double> scale;
+  GrowingInfo({Key key, @required this.mobile, @required this.animation})
+      : scale = Tween<double>().animate(
+          CurvedAnimation(
+            parent: animation,
+            curve: Interval(0.8, 1, curve: Curves.easeIn),
+          ),
+        ),
+        super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: animation,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.black,
+        ),
+        child: AsyncText(
+          fontSize: mobile ? 14 : 20,
+          path: 'assets/info/appmeinfo.json',
+          mapKey: 'AppMe',
+        ),
+      ),
+      builder: (BuildContext context, Widget child) {
+        return ScaleTransition(
+          scale: scale,
+          child: child,
+        );
+      },
     );
   }
 }

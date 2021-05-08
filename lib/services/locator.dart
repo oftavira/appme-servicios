@@ -1,3 +1,4 @@
+import 'package:appme/services/app_services_navigation.dart';
 import 'package:appme/services/drawer_service.dart';
 import 'package:appme/services/jsonreader.dart';
 import 'package:appme/services/navigation_service.dart';
@@ -7,6 +8,7 @@ import 'package:get_it/get_it.dart';
 GetIt locator = GetIt.instance;
 
 void setUpLocator() {
+  locator.registerLazySingleton(() => AppServicesNavigator());
   locator.registerLazySingleton(() => NavigationService());
   locator.registerLazySingleton(() => DrawerService());
   locator.registerLazySingleton(() => JsonReader());

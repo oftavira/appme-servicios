@@ -1,4 +1,4 @@
-import 'package:appme/constants/colors.dart';
+import 'package:appme/constants/constants.dart';
 import 'package:appme/locator_services/locator.dart';
 import 'package:appme/locator_services/storage_service/storage_service.dart';
 import 'package:appme/ui/base_widget.dart';

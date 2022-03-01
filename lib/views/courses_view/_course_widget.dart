@@ -1,4 +1,3 @@
-import 'package:appme/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class CourseWidget extends StatelessWidget {

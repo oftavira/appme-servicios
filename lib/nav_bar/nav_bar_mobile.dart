@@ -1,8 +1,7 @@
-import 'package:appme/constants/colors.dart';
+import 'package:appme/constants/constants.dart';
 import 'package:appme/locator_services/drawer/drawer_service.dart';
 import 'package:appme/locator_services/locator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'nav_bar_responsive_logo.dart';
 
 class NavBarMobile extends StatelessWidget {

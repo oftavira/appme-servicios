@@ -1,4 +1,4 @@
-import 'package:appme/constants/colors.dart';
+import 'package:appme/constants/constants.dart';
 import 'package:appme/nav_bar/nav_bar_responsive.dart';
 import 'package:appme/utils/contact_info.dart';
 import 'package:appme/views/sign_in_view/sign_in_widget.dart';

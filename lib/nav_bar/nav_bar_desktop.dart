@@ -1,7 +1,6 @@
+import 'package:appme/constants/constants.dart';
 import 'package:appme/nav_bar/nav_text.dart';
-import 'package:appme/constants/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'nav_bar_responsive_logo.dart';
 
 class NavBarTablet extends StatelessWidget {

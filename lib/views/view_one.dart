@@ -1,6 +1,5 @@
-import 'package:appme/constants/colors.dart';
+import 'package:appme/constants/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class ViewOne extends StatelessWidget {
   const ViewOne({Key key}) : super(key: key);

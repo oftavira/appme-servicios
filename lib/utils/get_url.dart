@@ -1,5 +1,5 @@
-import 'package:appme/services/locator.dart';
-import 'package:appme/services/storage_service.dart';
+import 'package:appme/locator_services/locator.dart';
+import 'package:appme/locator_services/storage_service/storage_service.dart';
 import 'package:flutter/material.dart';
 
 class GetUrl extends StatelessWidget {

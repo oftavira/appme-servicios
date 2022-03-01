@@ -69,7 +69,7 @@ class _ContactState extends State<Contact> with SingleTickerProviderStateMixin {
         child: AnimatedBuilder(
           animation: _controller,
           child: CustomText(
-            text: ' WhatsApp : 777 272 86 40 ',
+            text: ' WhatsApp : 56 27 51 85 84 ',
           ),
           builder: (BuildContext context, Widget child) {
             return FadeTransition(

@@ -1,6 +1,5 @@
-import 'package:appme/app_services_nav_view.dart';
-import 'package:appme/services/app_services_navigation.dart';
-import 'package:appme/services/locator.dart';
+import 'package:appme/locator_services/app_navigator/app_navigator.dart';
+import 'package:appme/locator_services/locator.dart';
 import 'package:flutter/material.dart';
 
 class TransitionContainer extends StatelessWidget {
@@ -17,7 +16,7 @@ class TransitionContainer extends StatelessWidget {
       color: Colors.pink,
       child: GestureDetector(
         onTap: () {
-          locator<AppServicesNavigator>().navigateTo('/view2');
+          locator<AppNavigator>().navigateTo('/view2');
         },
       ),
     );

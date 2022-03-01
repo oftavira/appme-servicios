@@ -1,5 +1,5 @@
-import 'package:appme/services/jsonreader.dart';
-import 'package:appme/services/locator.dart';
+import 'package:appme/locator_services/json/jsonreader.dart';
+import 'package:appme/locator_services/locator.dart';
 import 'package:appme/utils/custom_text.dart';
 import 'package:flutter/material.dart';
 

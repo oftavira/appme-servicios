@@ -1,3 +1,4 @@
+import 'package:appme/constants/colors.dart';
 import 'package:appme/ui/base_widget.dart';
 import 'package:appme/utils/async_list.dart';
 import 'package:appme/utils/async_text.dart';
@@ -8,36 +9,41 @@ class ViewTwo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedWidget(
-      theBuilder: (context, sizeInfo) {
-        double vertPad = sizeInfo.mobile ? 20 : 40;
-        double horiPad = sizeInfo.mobile ? 10 : 60;
-        return SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              vertical: vertPad,
-              horizontal: horiPad,
+    return Container(
+      decoration: BoxDecoration(
+        color: Black.withOpacity(0.9),
+      ),
+      child: SizedWidget(
+        theBuilder: (context, sizeInfo) {
+          double vertPad = sizeInfo.mobile ? 20 : 40;
+          double horiPad = sizeInfo.mobile ? 10 : 60;
+          return SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                vertical: vertPad,
+                horizontal: horiPad,
+              ),
+              child: Column(
+                children: [
+                  AsyncText(
+                    path: 'assets/info/appmeinfo.json',
+                    mapKey: 'AppMe2',
+                    fontSize: sizeInfo.mobile ? 16 : 22,
+                  ),
+                  SizedBox(
+                    height: sizeInfo.mobile ? 80 : 30,
+                  ),
+                  AsyncList(
+                    path: 'assets/info/appmeinfo.json',
+                    mapKey: 'ServiciosList',
+                    fontSize: sizeInfo.mobile ? 16 : 22,
+                  ),
+                ],
+              ),
             ),
-            child: Column(
-              children: [
-                AsyncText(
-                  path: 'assets/info/appmeinfo.json',
-                  mapKey: 'AppMe2',
-                  fontSize: sizeInfo.mobile ? 16 : 22,
-                ),
-                SizedBox(
-                  height: sizeInfo.mobile ? 80 : 30,
-                ),
-                AsyncList(
-                  path: 'assets/info/appmeinfo.json',
-                  mapKey: 'ServiciosList',
-                  fontSize: sizeInfo.mobile ? 16 : 22,
-                ),
-              ],
-            ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

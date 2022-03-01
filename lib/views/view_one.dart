@@ -57,7 +57,7 @@ class LandingContainer extends StatelessWidget {
         )),
         Container(
           padding: EdgeInsets.all(20),
-          color: AMTBlack2,
+          color: AMDGrey.shade800,
           child: Center(
             child: Text(
               "Pensado para ayudar a los negocios Mexicanos a mejorar su estrategia digital, ya sean micro, pequeños o medianos. El proyecto busca ayudar antes que obtener una ganancia, tu objetivo es primero, es por esto que hemos incluido planes de financiamiento y planes académicos que te permitiran aprender como se hacen los servicios que ofrecemos, así podrás optar por ser tu creador de contenido",

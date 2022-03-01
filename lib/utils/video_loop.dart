@@ -1,6 +1,6 @@
 import 'package:appme/constants/colors.dart';
-import 'package:appme/services/locator.dart';
-import 'package:appme/services/storage_service.dart';
+import 'package:appme/locator_services/locator.dart';
+import 'package:appme/locator_services/storage_service/storage_service.dart';
 import 'package:appme/ui/base_widget.dart';
 import 'package:appme/utils/custom_text.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +32,6 @@ class VideoLoopContainer extends StatelessWidget {
         future: locator<StorageService>().storage.ref(doc).getDownloadURL(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            print('El archivo fue localizado para su descarga');
             return Stack(
               fit: StackFit.expand,
               children: [
@@ -48,7 +47,6 @@ class VideoLoopContainer extends StatelessWidget {
               ],
             );
           } else if (snapshot.hasError) {
-            print('El archivo no fue localizado');
             return Stack(
               fit: StackFit.expand,
               children: [
@@ -99,26 +97,15 @@ class _BackGroundVideoState extends State<BackGroundVideo> {
     super.initState();
     _videoController = VideoPlayerController.network(widget.url);
     _videoController.setVolume(0);
-    _videoController.initialize().then(
-          (value) => playVideo(),
-          onError: () => print('Ocurrio un error al inicializar el video...'),
-        );
-  }
-
-  Future<void> playVideo() {
+    _videoController.initialize();
     _videoController.setLooping(true);
-    return _videoController.play().then(
-      (value) {
-        setState(() {});
-        print('Reproducción correcta...');
-      },
-      onError: () => print('Ocurrio un error al reproducir el video...'),
-    );
   }
 
   @override
   Widget build(BuildContext context) {
     opacity = 1;
+    _videoController.play();
+    setState(() {});
     return SizedWidget(
       theBuilder: (context, sizingInfo) {
         return FadeTransition(
@@ -194,7 +181,7 @@ class AnimatedVideoText extends StatelessWidget {
             scale: scale,
             child: Container(
               decoration: BoxDecoration(
-                color: AMTBlack,
+                color: Black.withOpacity(0.5),
                 border: Border.all(color: Colors.white),
               ),
               padding: EdgeInsets.all(10),

@@ -1,7 +1,10 @@
-import 'package:appme/home_view.dart';
+import 'package:appme/locator_services/locator.dart';
 import 'package:appme/utils/opening_opacity.dart';
+import 'package:appme/zone_app/main_scaffold.dart';
+import 'package:appme/zone_app_cubit/cubit/theme.dart';
+import 'package:appme/zone_app_cubit/cubit/theme_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:appme/services/locator.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   setUpLocator();
@@ -13,11 +16,16 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'AppMe',
-      theme: ThemeData(primarySwatch: Colors.grey),
-      home: MainAnimation(),
-    );
+    return BlocProvider<ThemeCubit>(
+      create: (context) => ThemeCubit(
+        ThemeInfo(isDefault: true),
+      ),
+      child: MaterialApp(
+        title: 'AppMe',
+        theme: ThemeData(primarySwatch: Colors.grey),
+        home: MainAnimation(),
+      ),
+    ); /*  */
   }
 }
 
@@ -28,7 +36,7 @@ class MainAnimation extends StatelessWidget {
   Widget build(BuildContext context) {
     return OpeningOpacity(
       child: SafeArea(
-        child: HomeView(title: 'AppMe'),
+        child: MainScaffold(title: 'AppMe'),
       ),
     );
   }

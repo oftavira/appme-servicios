@@ -5,11 +5,8 @@ import 'package:appme/utils/opening_opacity.dart';
 import 'package:appme/zone_app/app_constrained_container.dart';
 import 'package:appme/zone_app/app_navigator_widget.dart';
 import 'package:appme/zone_app/animated_background.dart';
-import 'package:appme/zone_app_cubit/cubit/theme.dart';
-import 'package:appme/zone_app_cubit/cubit/theme_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MainScaffold extends StatelessWidget {
   final String title;
@@ -18,11 +15,11 @@ class MainScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          BlocProvider.of<ThemeCubit>(context).change();
-        },
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     BlocProvider.of<ThemeCubit>(context).change();
+      //   },
+      // ),
       key: locator<DrawerService>().drawerKey,
       drawerEnableOpenDragGesture: false,
       drawer: AppMeDrawer(),

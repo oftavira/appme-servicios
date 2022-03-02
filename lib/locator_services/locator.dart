@@ -1,4 +1,5 @@
 import 'package:appme/locator_services/app_navigator/app_navigator.dart';
+import 'package:appme/locator_services/cloud_service/cloud_service.dart';
 import 'package:appme/locator_services/content_navigator/content_navigator.dart';
 import 'package:appme/locator_services/drawer/drawer_service.dart';
 import 'package:appme/locator_services/json/jsonreader.dart';
@@ -13,4 +14,5 @@ void setUpLocator() {
   locator.registerLazySingleton(() => DrawerService());
   locator.registerLazySingleton(() => JsonReader());
   locator.registerLazySingleton(() => StorageService());
+  locator.registerLazySingleton(() => Cloud());
 }

@@ -15,8 +15,8 @@ class AnimatedBackground extends StatelessWidget {
               duration: const Duration(seconds: 1),
               foregroundDecoration: BoxDecoration(
                 color: BlocProvider.of<ThemeCubit>(context).state.isDefault
-                    ? Colors.red.withOpacity(0.75)
-                    : Colors.black.withOpacity(0.75),
+                    ? Colors.black.withOpacity(0.55)
+                    : Colors.black.withOpacity(0.55),
               ),
               child: Image.asset(
                 sizingInfo.mobile

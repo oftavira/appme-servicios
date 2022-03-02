@@ -1,3 +1,5 @@
+import 'package:appme/locator_services/cloud_service/cloud_service.dart';
+import 'package:appme/locator_services/locator.dart';
 import 'package:appme/ui/base_widget.dart';
 import 'package:appme/utils/async_text.dart';
 import 'package:appme/utils/video_loop.dart';
@@ -39,6 +41,8 @@ class _LandingViewState extends State<LandingView>
       theBuilder: (context, sizingInformation) {
         double verticalPadd = sizingInformation.mobile ? 20 : 40;
         double horizontPadd = sizingInformation.mobile ? 40 : 100;
+        locator<Cloud>()
+            .addEvent('landing', sizingInformation.mobile.toString());
         return Stack(
           fit: StackFit.expand,
           children: [

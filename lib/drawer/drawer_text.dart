@@ -2,7 +2,6 @@ import 'package:appme/constants/constants.dart';
 import 'package:appme/locator_services/content_navigator/content_navigator.dart';
 import 'package:appme/locator_services/locator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class DrawerText extends StatelessWidget {
   final bool bigFont;
@@ -35,6 +34,7 @@ class DrawerText extends StatelessWidget {
           ),
         ),
         onTap: () {
+          Navigator.pop(context);
           locator<ContentNavigator>().navigateTo(routes[text]);
         },
       ),

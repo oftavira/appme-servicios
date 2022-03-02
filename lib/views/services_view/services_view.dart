@@ -1,4 +1,6 @@
 import 'package:appme/constants/constants.dart';
+import 'package:appme/locator_services/cloud_service/cloud_service.dart';
+import 'package:appme/locator_services/locator.dart';
 import 'package:appme/ui/base_widget.dart';
 import 'package:appme/utils/async_list.dart';
 import 'package:appme/utils/async_text.dart';
@@ -17,6 +19,7 @@ class ViewTwo extends StatelessWidget {
         theBuilder: (context, sizeInfo) {
           double vertPad = sizeInfo.mobile ? 20 : 40;
           double horiPad = sizeInfo.mobile ? 10 : 60;
+          locator<Cloud>().addEvent('servicios', sizeInfo.mobile.toString());
           return SingleChildScrollView(
             child: Padding(
               padding: EdgeInsets.symmetric(

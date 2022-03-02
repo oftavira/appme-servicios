@@ -80,37 +80,37 @@ class LandingContainer extends StatelessWidget {
 // }
 
 /// This is the stateful widget that the main application instantiates.
-class JumpingSizeContainer extends StatefulWidget {
-  JumpingSizeContainer({Key key}) : super(key: key);
+// class JumpingSizeContainer extends StatefulWidget {
+//   JumpingSizeContainer({Key key}) : super(key: key);
 
-  @override
-  _JumpingSizeContainerState createState() => _JumpingSizeContainerState();
-}
+//   @override
+//   _JumpingSizeContainerState createState() => _JumpingSizeContainerState();
+// }
 
-/// This is the private State class that goes with JumpingSizeContainer.
-class _JumpingSizeContainerState extends State<JumpingSizeContainer> {
-  bool drawerIsOpen = false;
+// /// This is the private State class that goes with JumpingSizeContainer.
+// class _JumpingSizeContainerState extends State<JumpingSizeContainer> {
+//   bool drawerIsOpen = false;
 
-  @override
-  Widget build(BuildContext context) {
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: GestureDetector(
-        onTap: () {
-          setState(() {
-            drawerIsOpen = !drawerIsOpen;
-          });
-        },
-        child: AnimatedContainer(
-          width: drawerIsOpen ? 100 : 200,
-          height: drawerIsOpen ? 100 : 200,
-          color: drawerIsOpen ? Colors.orange : Colors.green,
-          alignment:
-              drawerIsOpen ? Alignment.center : AlignmentDirectional.topCenter,
-          duration: Duration(seconds: 2),
-          curve: Curves.elasticInOut,
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return MouseRegion(
+//       cursor: SystemMouseCursors.click,
+//       child: GestureDetector(
+//         onTap: () {
+//           setState(() {
+//             drawerIsOpen = !drawerIsOpen;
+//           });
+//         },
+//         child: AnimatedContainer(
+//           width: drawerIsOpen ? 100 : 200,
+//           height: drawerIsOpen ? 100 : 200,
+//           color: drawerIsOpen ? Colors.orange : Colors.green,
+//           alignment:
+//               drawerIsOpen ? Alignment.center : AlignmentDirectional.topCenter,
+//           duration: Duration(seconds: 2),
+//           curve: Curves.elasticInOut,
+//         ),
+//       ),
+//     );
+//   }
+// }

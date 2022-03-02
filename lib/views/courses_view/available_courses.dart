@@ -1,3 +1,5 @@
+import 'package:appme/locator_services/cloud_service/cloud_service.dart';
+import 'package:appme/locator_services/locator.dart';
 import 'package:appme/ui/base_widget.dart';
 import 'package:appme/ui/ui_enum.dart';
 import 'package:appme/views/courses_view/animated_course_widget.dart';
@@ -32,6 +34,8 @@ class _AvailableCoursesState extends State<AvailableCourses>
     _controller.forward();
     return SizedWidget(
       theBuilder: (context, sizingInformation) {
+        locator<Cloud>()
+            .addEvent('Courses', sizingInformation.mobile.toString());
         if (sizingInformation.deviceScreenType == DeviceScreenType.Mobile) {
           return ListView.separated(
             itemBuilder: (context, index) {

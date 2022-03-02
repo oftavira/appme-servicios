@@ -13,30 +13,30 @@ class ContentWidget extends StatelessWidget {
     return Column(
       children: [
         NavBar(),
-        SizedBox(height: 10),
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          color: Black,
-          height: 50,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: 10,
-              ),
-              Hero(
-                tag: 'sign',
-                child: SignInWidget(
-                  key: Key('button'),
-                  isButton: true,
-                  height: 40,
-                  width: 200,
-                ),
-              ),
-            ],
-          ),
-        ),
+        // SizedBox(height: 10),
+        // Container(
+        //   padding: EdgeInsets.symmetric(horizontal: 20),
+        //   color: Black,
+        //   height: 50,
+        //   child: Row(
+        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //     crossAxisAlignment: CrossAxisAlignment.center,
+        //     children: [
+        //       SizedBox(
+        //         width: 10,
+        //       ),
+        //       Hero(
+        //         tag: 'sign',
+        //         child: SignInWidget(
+        //           key: Key('button'),
+        //           isButton: true,
+        //           height: 40,
+        //           width: 200,
+        //         ),
+        //       ),
+        //     ],
+        //   ),
+        // ),
         SizedBox(
           height: 10,
         ),

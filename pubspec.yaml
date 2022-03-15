@@ -103,6 +103,15 @@ flutter:
     - family: Lexend
       fonts:
         - asset: assets/textFonts/LexendMega.ttf
+    - family: gcafe
+      fonts:
+        - asset: assets/textFonts/gcafe.ttf
+    - family: alte
+      fonts:
+        - asset: assets/textFonts/alte.ttf
+    - family: comforta
+      fonts:
+        - asset: assets/textFonts/comforta.ttf
     
   #   - family: Trajan Pro
   #     fonts:

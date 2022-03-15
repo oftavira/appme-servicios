@@ -1,3 +1,4 @@
+import 'package:appme/views/arts_view/arts_view.dart';
 import 'package:appme/views/courses_view/courses_list.dart';
 import 'package:appme/views/landing_page_view/landing_view.dart';
 import 'package:appme/views/services_view/services_view.dart';
@@ -39,6 +40,9 @@ class ContentRouter {
 
       case '/view3':
         return getPageRoute(CoursesList());
+
+      case '/view4':
+        return getPageRoute(ArticlesView());
 
       default:
         return MaterialPageRoute(

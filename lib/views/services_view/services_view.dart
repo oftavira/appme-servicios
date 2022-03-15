@@ -1,4 +1,3 @@
-import 'package:appme/constants/constants.dart';
 import 'package:appme/locator_services/cloud_service/cloud_service.dart';
 import 'package:appme/locator_services/locator.dart';
 import 'package:appme/ui/base_widget.dart';
@@ -12,9 +11,6 @@ class ViewTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: Black.withOpacity(0.9),
-      ),
       child: SizedWidget(
         theBuilder: (context, sizeInfo) {
           double vertPad = sizeInfo.mobile ? 20 : 40;

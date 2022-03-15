@@ -14,8 +14,8 @@ class NavBarTablet extends StatelessWidget {
           begin: Alignment.centerRight,
           end: Alignment.centerLeft,
           colors: [
-            AMGrey,
-            Colors.black,
+            Theme.of(context).primaryColor,
+            Theme.of(context).secondaryHeaderColor,
           ],
         ),
       ),

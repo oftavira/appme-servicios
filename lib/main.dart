@@ -17,20 +17,34 @@ void main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class MyApp extends StatefulWidget {
+  MyApp({Key key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool isRandomTheme = true;
+  ThemeData randomTheme;
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<ThemeCubit>(
       create: (context) => ThemeCubit(
         ThemeInfo(isDefault: true),
       ),
-      child: MaterialApp(
-        title: 'AppMe',
-        theme: ThemeData(primarySwatch: Colors.grey),
-        home: MainAnimation(),
+      child: BlocBuilder<ThemeCubit, ThemeInfo>(
+        builder: (context, info) {
+          randomTheme = info.light();
+          return MaterialApp(
+            title: 'AppMe',
+            theme: randomTheme,
+            home: MainAnimation(),
+          );
+        },
       ),
-    ); /*  */
+    );
   }
 }
 

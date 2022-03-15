@@ -29,7 +29,7 @@ class DrawerText extends StatelessWidget {
             child: Text(
               text,
               style: TextStyle(
-                  color: Colors.white, fontSize: fontS, fontFamily: 'TekoR'),
+                  color: Colors.white, fontSize: fontS, fontFamily: fontFam),
             ),
           ),
         ),
@@ -65,7 +65,7 @@ class SlidedWidget extends StatelessWidget {
               Tween<Offset>(begin: Offset(side, 0), end: Offset.zero).animate(
             CurvedAnimation(
               parent: transitionAnimation,
-              curve: Interval(start, start + 0.3, curve: Curves.easeInOut),
+              curve: Interval(start, start + 0.25, curve: Curves.easeInOut),
             ),
           ),
           child: child,

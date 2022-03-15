@@ -57,7 +57,7 @@ class AnimatedCourseWidget extends StatelessWidget {
           height: mobile ? 110 * (sizingH.value) : 150 * (sizingH.value),
           width: sizingInfo.widgetSize.width * (sizing.value),
           decoration: BoxDecoration(
-            color: Black.withOpacity(0.9),
+            color: Theme.of(context).hoverColor,
             border: Border.all(color: Colors.white),
           ),
           child: FadeTransition(

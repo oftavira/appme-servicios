@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Cloud {
+  final FirebaseFirestore instance = FirebaseFirestore.instance;
   static CollectionReference users =
       FirebaseFirestore.instance.collection('main');
 

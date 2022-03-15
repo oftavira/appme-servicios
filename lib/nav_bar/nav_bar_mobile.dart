@@ -12,11 +12,11 @@ class NavBarMobile extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
+          begin: Alignment.centerRight,
+          end: Alignment.centerLeft,
           colors: [
-            Colors.black,
-            AMGrey,
+            Theme.of(context).primaryColor,
+            Theme.of(context).secondaryHeaderColor,
           ],
         ),
       ),
@@ -37,7 +37,7 @@ class NavBarMobile extends StatelessWidget {
                     height: 50,
                     width: 50,
                     decoration: BoxDecoration(
-                      color: AMGrey,
+                      color: Theme.of(context).dividerColor,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Icon(

@@ -20,25 +20,25 @@ class _AppMeDrawerState extends State<AppMeDrawer>
       vsync: this,
       duration: const Duration(seconds: 1),
     );
+    _animationController.forward();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    _animationController.forward();
     return SizedWidget(
       theBuilder: (context, sizingInfo) {
         return Container(
           width: 200,
           decoration: BoxDecoration(
-            color: AMDGrey.shade800,
+            color: Theme.of(context).highlightColor,
             borderRadius: BorderRadius.only(
               topRight: Radius.circular(25),
               bottomRight: Radius.circular(25),
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.blue,
+                color: Theme.of(context).primaryColor,
                 blurRadius: 10,
                 spreadRadius: 5,
               ),
@@ -50,7 +50,7 @@ class _AppMeDrawerState extends State<AppMeDrawer>
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               SlidedWidget(
-                start: 0.1,
+                start: 0,
                 side: -1,
                 transitionAnimation: _animationController.view,
                 child: DrawerText(
@@ -60,7 +60,7 @@ class _AppMeDrawerState extends State<AppMeDrawer>
                 ),
               ),
               SlidedWidget(
-                start: 0.4,
+                start: 0.25,
                 side: -1,
                 transitionAnimation: _animationController.view,
                 child: DrawerText(
@@ -70,11 +70,21 @@ class _AppMeDrawerState extends State<AppMeDrawer>
                 ),
               ),
               SlidedWidget(
-                start: 0.7,
+                start: 0.5,
                 side: -1,
                 transitionAnimation: _animationController.view,
                 child: DrawerText(
                   text: 'Académia',
+                  bigFont: true,
+                  fontFam: 'Lexend',
+                ),
+              ),
+              SlidedWidget(
+                start: 0.75,
+                side: -1,
+                transitionAnimation: _animationController.view,
+                child: DrawerText(
+                  text: 'Articulos',
                   bigFont: true,
                   fontFam: 'Lexend',
                 ),

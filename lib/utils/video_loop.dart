@@ -181,7 +181,6 @@ class AnimatedVideoText extends StatelessWidget {
             scale: scale,
             child: Container(
               decoration: BoxDecoration(
-                color: Black.withOpacity(0.5),
                 border: Border.all(color: Colors.white),
               ),
               padding: EdgeInsets.all(10),

@@ -54,6 +54,7 @@ pubscpeck.lock
 firebase.json
 
 # Folders
+/lib/_delete/
 /test/
 /web/
 /.firebase/
